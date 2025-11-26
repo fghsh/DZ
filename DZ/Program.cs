@@ -32,14 +32,14 @@ namespace ConsoleApp3
                 int n = Convert.ToInt32(Console.ReadLine());
                 Console.Write("введите символ: ");
                 string s = Console.ReadLine();
-                Console.WriteLine(GetKubX(n, s));
+                Console.WriteLine(GetFigures(n, s));
             }
 
 
         }
 
         /// <summary>
-        /// Выводит четные числа от 0 до <paramref name="n"/> через запятую
+        /// Формируем строку из четные числа от 0 до <paramref name="n"/> через запятую
         /// </summary>
         /// <param name="n"></param>
         /// <returns></returns>
@@ -64,7 +64,7 @@ namespace ConsoleApp3
         /// <returns></returns>
         /// 
        
-        static string GetKubX(int n, string symbol)
+        static string GetFigures(int n, string symbol)
         {
             string result = "";
 
@@ -74,7 +74,8 @@ namespace ConsoleApp3
                 {
                     for (int j = 1; j <= n; j += 1)
                     {
-                        result += symbol + " ";
+                        if (i == 1 || i == n)
+                            result += symbol + " ";
                     }
                 }
                 else //todo оптимизировать построение
@@ -90,27 +91,117 @@ namespace ConsoleApp3
                     }
                 }
 
-
                 result += "\n";
             }
 
+            result += "\n";
+
+            // Ромб
+            int mid = n/2;
+            for (int i = 0; i < n; i++)
+            {
+                int diff;
+                if (i > mid)
+                {
+                    diff = n - 1 - i;
+                }
+                else
+                {
+                    diff = i;
+                }
+
+                for (int j = 0; j < n; j++)
+                {
+                    if (j == mid - diff || j == mid + diff)
+                    {
+                        if (i == mid && j == mid)
+                            result += "  ";  
+                        else
+                            result += symbol + " ";
+                    }
+                    else
+                    {
+                        result += "  ";
+                    }
+                }
+                result += "\n";
+            
+            }
+
+            // Треугольник
+            for (int i = 1; i <= n; i++)
+            {
+                if (i == 1 || i == 2)
+                {
+                    for (int j = 1; j <= i; j++)
+                    {
+                        result += symbol;
+                    }
+                }
+                else if (i < n)
+                {
+                    result += symbol;
+                    for (int j = 1; j <= i - 2; j++)
+                    {
+                        result += " ";
+                    }
+                    result += symbol;
+                }
+                else
+                {
+                    for (int j = 1; j <= n; j++)
+                    {
+                        result += symbol;
+                    }
+                }
+                result += "\n";
+            }
+            result += "\n";
+
+            // Стрелка вправо
+            for (int i = 0; i < n; i++)
+            {
+                if (i <= mid)
+                {
+                    // Верхняя половина стрелки (растущая ширина)
+                    for (int j = 0; j <= i; j++)
+                    {
+                        if (j == 0 || j == i)
+                            result += symbol;
+                        else
+                            result += " ";
+                    }
+                }
+                else
+                {
+                    // Нижняя половина стрелки (уменьшающая ширина)
+                    for (int j = 0; j < n - i; j++)
+                    {
+                        if (j == 0 || j == n - i - 1)
+                            result += symbol;
+                        else
+                            result += " ";
+                    }
+                }
+
+                result += "\n";
+            }
             return result;
 
         }
         /// <summary>
-        /// Проверка есть ли в введенном слове <paramref name="s"/> последовательность букв слова Hello
+        /// Проверка есть ли в введенном слове <paramref name="inputstr"/> последовательность букв слова Hello
         /// </summary>
-        /// <param name="s"></param>
+        /// <param name="inputstr"></param>
         /// <returns></returns>
 
-        //todo: добавить ввод значений от пользователя для параметра s
-        static bool SearchHello(string s, string word)
+        static bool SearchHello(string inputstr, string word)
         {
             int count = 0;
             
-            for (int i = 0; i < s.Length; i++)
+            for (int i = 0; i < inputstr.Length; i++)
             {
-                if (s[i] == word[count])
+                if (inputstr[i] == word[count])
                 {
                     count++;
                 }
