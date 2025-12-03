@@ -1,46 +1,98 @@
-﻿namespace ConsoleApp3
+﻿using static ConsoleApp3.Program;
+using WordSearcher = ConsoleApp3.Program;
+
+namespace ConsoleApp3
 {
+    public class WordSearcher
+    {
+
+        public static bool SearchWord(string inputstr, string word)
+        {
+            int count = 0;
+
+            for (int i = 0; i < inputstr.Length; i++)
+            {
+                if (inputstr[i] == word[count])
+                {
+                    count++;
+                }
+                if (count == word.Length)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+    }
     internal class Program
     {
-        //static void Main(string[] args)
-        //{
-        //    Console.Write("1. Задание с чётным числами \n2. Задание со словами \n3. Задание с кубом\n");
-        //    Console.Write("введите номер задания: ");
-        //    int num = Convert.ToInt32(Console.ReadLine());
+        static void Main(string[] args)
+        {
+            Console.Write("1. Задание с чётным числами \n2. Задание со словами \n3. Задание с кубом\n");
+            Console.Write("введите номер задания: ");
+            int num = Convert.ToInt32(Console.ReadLine());
 
-        //    if (num == 1)
-        //    {
-        //        Console.Write("введите число n: ");
+            //if (num == 1)
+            //{
+            //    Console.Write("введите число n: ");
 
-        //        int n = Convert.ToInt32(Console.ReadLine());
+            //    int n = Convert.ToInt32(Console.ReadLine());
 
-        //        Console.WriteLine(GetOddNumbers(n));
-        //    }
+            //    Console.WriteLine(GetOddNumbers(n));
+            //}
 
-        //    if (num == 2)
-        //    {
-        //        Console.Write("Введите слово: ");
-        //        string strok = Console.ReadLine();
+            if (num == 2)
+            {
+                Console.Write("Введите слово: ");
+                string strok = Console.ReadLine();
 
-        //        Console.WriteLine(SearchWord(strok, "hello"));
-        //    }
-        //    if (num == 3)
-        //    {
-        //        Console.Write("введите число n: ");
-        //        int n = Convert.ToInt32(Console.ReadLine());
-        //        Console.Write("введите символ: ");
-        //        string s = Console.ReadLine();
-        //        Console.WriteLine(GetFigures(n, s));
-        //    }
+                Console.WriteLine(WordSearcher.SearchWord(strok, "hello"));
+            }
+
+            //if (num == 3)
+            //{
+            //    Console.Write("введите число n: ");
+            //    int n = Convert.ToInt32(Console.ReadLine());
+            //    Console.Write("введите символ: ");
+            //    string s = Console.ReadLine();
+            //    Console.WriteLine(GetFigures(n, s));
+            //}
 
 
-        //}
+        }
+        /// <summary>
+        /// Проверка есть ли в введенном слове <paramref name="inputstr"/> последовательность букв слова Hello
+        /// </summary>
+        /// <param name="inputstr"></param>
+        /// <returns></returns>
+        public class WordSearcher
+        {
 
-        ///// <summary>
-        ///// Формируем строку из четные числа от 0 до <paramref name="n"/> через запятую
-        ///// </summary>
-        ///// <param name="n"></param>
-        ///// <returns></returns>
+            public static bool SearchWord(string inputstr, string word)
+            {
+                int count = 0;
+
+                for (int i = 0; i < inputstr.Length; i++)
+                {
+                    if (inputstr[i] == word[count])
+                    {
+                        count++;
+                    }
+                    if (count == word.Length)
+                    {
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+        }
+        /// <summary>
+        /// Формируем строку из четные числа от 0 до <paramref name="n"/> через запятую
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns></returns>
         //static string GetOddNumbers(int n)
         //{
         //    string stroka = "";
@@ -54,16 +106,16 @@
         //    return stroka;
         //}
 
-        ///// <summary>
-        ///// Формирует фигуры используя <paramref name="n"/>, из символов параметра <paramref name="symbol"/>
-        ///// </summary>
-        ///// <param name="n">Количество значений в одной стороне.</param>
-        ///// <param name="symbol">Символ, из которого будет состоять квадрат.</param>
-        ///// <returns></returns>
-        ///// 
+        /// <summary>
+        /// Формирует фигуры используя <paramref name="n"/>, из символов параметра <paramref name="symbol"/>
+        /// </summary>
+        /// <param name="n">Количество значений в одной стороне.</param>
+        /// <param name="symbol">Символ, из которого будет состоять квадрат.</param>
+        /// <returns></returns>
+        /// 
 
-        ////todo сделать stringBuilder.
-        //static string GetFigures(int n, string symbol) 
+        //todo сделать stringBuilder.
+        //static string GetFigures(int n, string symbol)
         //{
         //    string result = "";
 
@@ -99,7 +151,7 @@
 
         //    // Пустой ромб
 
-        //    int mid = n/2;
+        //    int mid = n / 2;
         //    for (int i = 0; i < n; i++)
         //    {
         //        int diff;
@@ -117,7 +169,7 @@
         //            if (j == mid - diff || j == mid + diff)
         //            {
         //                if (i == mid && j == mid)
-        //                    result += "  ";  
+        //                    result += "  ";
         //                else
         //                    result += symbol + " ";
         //            }
@@ -194,30 +246,15 @@
         //    return result;
 
         //}
-        ///// <summary>
-        ///// Проверка есть ли в введенном слове <paramref name="inputstr"/> последовательность букв слова Hello
-        ///// </summary>
-        ///// <param name="inputstr"></param>
-        ///// <returns></returns>
+       
+        
 
-        //static bool SearchWord(string inputstr, string word)
-        //{
-        //    int count = 0;
 
-        //    for (int i = 0; i < inputstr.Length; i++)
-        //    {
-        //        if (inputstr[i] == word[count])
-        //        {
-        //            count++;
-        //        }
-        //        if (count == word.Length) 
-        //        {
-        //            return true;
-        //        }
-        //    } 
+       
 
-        //    return false;
-        //}
+
+
+
 
         //todo Спроектируйте и реализуйте систему для обработки заказов в интернет-магазине. Минимальные сущности:
         //Заказ (Order), Товар (Product), Корзина (Cart), Платеж (Payment) и Пользователь (Customer).
@@ -227,154 +264,205 @@
         /// <summary>
         /// Пользователь
         /// </summary>
-        class Customer //Пользователь
-        {
+        //class Customer //Пользователь
+        //{
 
-            private string name;
-            private decimal balance;
-            public Cart cart { get; set; }
-            private List<Order> orders; // У пользователя несколько заказов
+        //    private string name;
+        //    private decimal balance;
+        //    public Cart cart { get; set; }
+        //    private List<Order> orders; // У пользователя несколько заказов
 
-            public Customer(string name, decimal balance)
-            {
-                this.name = name;
-                this.balance = balance;
-                this.orders = new List<Order>();
-                this.cart = new Cart();
+        //    public Customer(string name, decimal balance)
+        //    {
+        //        this.name = name;
+        //        this.balance = balance;
+        //        this.orders = new List<Order>();
+        //        this.cart = new Cart();
 
-            }
-            public string GetName() => name;
-            public decimal GetBalance() => balance;
+        //    }
+        //    public string GetName() => name;
+        //    public decimal GetBalance() => balance;
 
-            // Свойство для доступа к корзине
-            public Cart Cart => cart;
+        //    /// <summary>
+        //    /// Свойство для доступа к корзине
+        //    /// </summary>
+        //    public Cart Cart => cart;
 
-            // Методы для работы с заказами
-            public void AddOrder(Order order)
-            {
-                orders.Add(order);
-            }
+        //    /// <summary>
+        //    /// Методы для работы с заказами
+        //    /// </summary>
+        //    /// <param name="order"></param>
+        //    public void AddOrder(Order order)
+        //    {
+        //        orders.Add(order);
+        //    }
 
-            public List<Order> GetOrders() => new List<Order>(orders);
+        //    public List<Order> GetOrders() => new List<Order>(orders);
 
-            // Метод для оплаты
-            public bool ProcessPayment(Payment payment)
-            {
-                if (balance >= payment.GetTotalPrice())
-                {
-                    balance -= payment.GetTotalPrice();
-                    return true;
-                }
-                return false;
-            }
-
-
-        }
-        /// <summary>
-        /// Платеж
-        /// </summary>
-        class Payment //Платеж
-        {
-            private decimal amount;
-            private string description;
-            private DateTime paymentDate;
-            private PaymentStatus status;
-
-            public Payment(decimal amount, string description)
-            {
-                this.amount = amount;
-                this.description = description;
-                this.paymentDate = DateTime.Now;
-                this.status = PaymentStatus.Pending;
-            }
-
-            // Реализация интерфейса ITotalCost
-            public decimal GetTotalPrice() => amount;
-
-            public string GetDescription() => description;
-            public DateTime GetPaymentDate() => paymentDate;
-            public PaymentStatus GetStatus() => status;
-
-            public void MarkAsCompleted() => status = PaymentStatus.Completed;
-            public void MarkAsFailed() => status = PaymentStatus.Failed;
-        }
-        public enum PaymentStatus
-        {
-            Pending,
-            Completed,
-            Failed,
-            Refunded
-        }
+        //    /// <summary>
+        //    /// Метод для оплаты
+        //    /// </summary>
+        //    /// <param name="payment"></param>
+        //    /// <returns></returns>
+        //    public bool ProcessPayment(Payment payment)
+        //    {
+        //        if (balance >= payment.GetTotalPrice())
+        //        {
+        //            balance -= payment.GetTotalPrice();
+        //            return true;
+        //        }
+        //        return false;
+        //    }
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        class Product  //Товар
-        {
-            public string name;
-            private int price;
+        //}
+        ///// <summary>
+        ///// Платеж
+        ///// </summary>
+        //class Payment //Платеж
+        //{
+        //    private decimal amount;
+        //    private string description;
+        //    private DateTime paymentDate;
+        //    private PaymentStatus status;
 
-            public decimal GetPrice()
-            {
-                return price;
-            }
-        }
-        /// <summary>
-        /// Заказ,есть метод возвращения общей стоимости товаров
-        /// </summary>
-        class Order : TotalCost
-        {
+        //    public Payment(decimal amount, string description)
+        //    {
+        //        this.amount = amount;
+        //        this.description = description;
+        //        this.paymentDate = DateTime.Now;
+        //        this.status = PaymentStatus.Pending;
+        //    }
 
-            private string customer;
-            private List<Product> products;
+        //    // Реализация интерфейса ITotalCost
+        //    public decimal GetTotalPrice() => amount;
 
-            public Order(string customer, List<Product> products)
-            {
+        //    public string GetDescription() => description;
+        //    public DateTime GetPaymentDate() => paymentDate;
+        //    public PaymentStatus GetStatus() => status;
 
-                this.customer = customer;
-                this.products = new List<Product>(products);
-            }
+        //    public void MarkAsCompleted() => status = PaymentStatus.Completed;
+        //    public void MarkAsFailed() => status = PaymentStatus.Failed;
+        //}
+        //public enum PaymentStatus
+        //{
+        //    /// <summary>
+        //    /// 
+        //    /// </summary>
+        //    Pending,
+        //    /// <summary>
+        //    /// Оплачен
+        //    /// </summary>
+        //    Completed,
+        //    Failed,
+        //    Refunded
+        //}
 
-            public decimal GetTotalPrice()
-            {
-                decimal totalprice = 0;
 
-                foreach (var product in products)
-                {
-                    totalprice += product.GetPrice();
-                }
+        ///// <summary>
+        ///// Товар
+        ///// </summary>
+        //class Product  //Товар
+        //{
+        //    public string name;
+        //    private int price;
 
-                return totalprice;
-            }
+        //    public decimal GetPrice()
+        //    {
+        //        return price;
+        //    }
+        //}
+        ///// <summary>
+        ///// Заказ.
+        ///// </summary>
+        //class Order : ITotalPrice
+        //{
 
-            public IReadOnlyList<Product> GetProducts() => products.AsReadOnly();
-        }
-        /// <summary>
-        /// Корзина, есть метод возвращения общей стоимости товаров
-        /// </summary>
-        class Cart : TotalCost
-        {
-            public string name;
-            public string path;
-            public List<Product> products;
+        //    private string _customer;
+        //    private List<Product> _products;
 
-            public decimal GetTotalPrice()
-            {
-                decimal totalprice = 0;
-                foreach (var product in products)
-                {
-                    totalprice += product.GetPrice();
-                }
-                return totalprice;
-            }
+        //    public Order(string customer, List<Product> products)
+        //    {
 
-        }
+        //        _customer = customer;
+        //        _products = products;
+        //    }
 
-        public interface TotalCost
-        {
-            decimal GetTotalPrice();
-        }
+        //    public decimal GetTotalPrice()
+        //    {
+        //        decimal totalprice = 0;
+
+        //        foreach (var product in _products)
+        //        {
+        //            totalprice += product.GetPrice();
+        //        }
+
+        //        return totalprice;
+        //    }
+
+        //    public IReadOnlyList<Product> GetProducts() => _products.AsReadOnly();
+        //}
+        ///// <summary>
+        ///// Корзина.
+        ///// </summary>
+        //class Cart : ITotalPrice
+        //{
+        //    // Убрать private List<Product> products;
+        //    private List<Product> products;
+        //    private Dictionary<Product, int> productQuantities;
+        //    public string price;
+
+        //    public Cart()
+        //    {
+        //        products = new List<Product>();
+        //        productQuantities = new Dictionary<Product, int>();
+        //    }
+
+        //    public void AddProduct(Product product,  int quantity = 1) // Добавление товара
+        //    {
+        //        if (products.Contains(product))
+        //        {
+        //            productQuantities[product] += quantity;
+        //        }
+        //        else
+        //        {
+        //            products.Add(product);
+        //            productQuantities[product] = quantity;
+        //        }
+        //    }
+        //    public void RemoveProduct(Product product, int quantity = 1) // Удаление товара
+        //    {
+        //        if (productQuantities.ContainsKey(product))
+        //        {
+        //            int currentQuantity = productQuantities[product];
+
+        //            if (currentQuantity <= quantity)
+        //            {
+        //                products.Remove(product);
+        //                productQuantities.Remove(product);
+        //            }
+        //            else
+        //            {
+        //                productQuantities[product] = currentQuantity - quantity;
+        //            }
+        //        }
+        //    }
+        //    public decimal GetTotalPrice()
+        //    {
+        //        decimal totalprice = 0;
+        //        foreach (var product in products)
+        //        {
+        //            totalprice += product.GetPrice();
+        //        }
+        //        return totalprice;
+        //    }
+
+        //}
+
+        //public interface ITotalPrice
+        //{
+        //    decimal GetTotalPrice();
+        //}
 
     }
 }
